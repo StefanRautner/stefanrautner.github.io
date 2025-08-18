@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Google Font for futuristic/cyber look -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header with navigation, hamburger menu, language switcher, and particles effect -->
+    <header>
+        <div class="particles"></div> <!-- Animated background particles -->
+        <h1>Stefan Rautner</h1>
+
+        <!-- Hamburger for mobile menu -->
+        <div class="hamburger">
+            <div></div> <!-- top line -->
+            <div></div> <!-- middle line -->
+            <div></div> <!-- bottom line -->
+        </div>
+
+        <!-- Right-side menu container including nav links and language switcher -->
+        <div class="menu-right">
+            <nav class="nav-links">
+                <!-- Navigation links using data-key for translations -->
+                <a href=".hero" data-key="nav_home">Home</a>
+                <a href="#about" data-key="nav_about">About</a>
+                <a href="#projects" data-key="nav_projects">Projects</a>
+                <a href="#certificates" data-key="nav_certificates">Certificates</a>
+                <a href="#voluntary" data-key="nav_voluntary">Voluntary</a>
+                <a href="#frameworks" data-key="nav_skills">Skills</a>
+                <a href="#contact" data-key="nav_contact">Contact</a>
+            </nav>
+
+            <!-- Language switcher inside the hamburger menu -->
+            <div class="lang-switcher">
+                <div class="lang-dropdown">
+                    <button class="lang-btn">EN</button> <!-- Current language -->
+                    <div class="lang-options">
+                        <button class="lang-option" data-lang="en">English</button>
+                        <button class="lang-option" data-lang="de">Deutsch</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section / Landing area -->
+    <section class="hero">
+        <h2 data-key="hero_title">Welcome! I Build Smart and Secure Digital Experiences</h2> <!-- Hero title -->
+        <p data-key="hero_text">"Debugging is like being the detective in a crime movie where you are also the murderer." - Filipe Fortes</p> <!-- Hero description -->
+        <a href="#projects" class="btn" data-key="hero_btn">View Projects</a> <!-- Hero CTA button -->
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h3 data-key="about_title">About Me</h3>
+        <p data-key="about_text">I design intelligent home systems and automations, ensuring they are reliable and secure.</p>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h3 data-key="projects_title">Projects</h3>
+        <div class="projects"></div> <!-- Project cards loaded dynamically -->
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates">
+        <h3 data-key="certificates_title">Certificates</h3>
+        <div class="cards-container certificates"></div> <!-- Certificates cards with optional links -->
+    </section>
+
+    <!-- School Work Section -->
+    <section id="school-work">
+        <h3 data-key="school_work_title">School/Work</h3>
+        <div class="cards-container school-work"></div> <!-- Cards for school projects or assignments -->
+    </section>
+
+    <!-- Voluntary Work Section -->
+    <section id="voluntary">
+        <h3 data-key="voluntary_title">Voluntary Work</h3>
+        <div class="cards-container voluntary"></div> <!-- Voluntary work cards -->
+    </section>
+
+    <!-- Frameworks / Skills Section -->
+    <section id="frameworks">
+        <h3 data-key="frameworks_title">Frameworks</h3>
+        <div class="cards-container frameworks"></div> <!-- Skills cards -->
+    </section>
+
+    <!-- Natural Languages Section -->
+    <section id="languages">
+        <h3 data-key="languages_title">Natural Languages</h3>
+        <div class="cards-container languages"></div> <!-- Natural languages cards -->
+    </section>
+
+    <!-- Programming Languages Section -->
+    <section id="programming">
+        <h3 data-key="programming_title">Programming Languages</h3>
+        <div class="cards-container programming"></div> <!-- Programming languages cards -->
+    </section>
+
+    <!-- Databases Section -->
+    <section id="databases">
+        <h3 data-key="databases_title">Databases</h3>
+        <div class="cards-container databases"></div> <!-- Database skills cards -->
+    </section>
+
+    <!-- GitHub Stats Section -->
+    <!-- GitHub Stats Section -->
+<section id="github-stats">
+    <h3 data-key="github_stats_title">GitHub Stats</h3>
+    <div class="cards-container github-stats">
+        <!-- Profile Details Card -->
+        <div class="github-card">
+            <img 
+              src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=StefanRautner&theme=react" 
+              alt="GitHub Stats" 
+            />
+        </div>
+
+        <!-- Streak Stats Card -->
+        <div class="github-card">
+            <img 
+              src="https://streak-stats.demolab.com?user=StefanRautner&theme=react" 
+              alt="GitHub Streak" 
+            />
+        </div>
+
+        <!-- Top Languages Card -->
+        <div class="github-card">
+            <img 
+              src="https://github-readme-stats.vercel.app/api/top-langs/?username=StefanRautner&layout=compact&theme=react" 
+              alt="Top Languages" 
+            />
+        </div>
+    </div>
+</section>
+
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h3 data-key="contact_title">Contact Me</h3>
+        <p data-key="contact_text">Feel free to reach out for collaboration or freelance projects.</p>
+        <div class="contact-links">
+            <a id="emailBtn" class="btn contact-btn" data-key="contact_btn">Email Me</a> <!-- Opens email client -->
+            <a id="githubBtn" class="btn github-btn" target="_blank">GitHub</a> <!-- Opens GitHub profile -->
+        </div>
+    </section>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollTopBtn" class="scroll-top">↑</button> <!-- Button for scrolling back to top -->
+
+    <!-- Footer -->
+    <footer>
+        <span data-key="footer_text">&copy; 2025 Stefan Rautner. All Rights Reserved.</span> <!-- Footer text -->
+    </footer>
+
+    <!-- Main JavaScript file -->
+    <script src="script.js"></script>
+</body>
+
+</html>
