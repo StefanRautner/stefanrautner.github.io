@@ -26,7 +26,10 @@
     { "title": "SparkNet", "text": "<br>Ein plattformübergreifendes Smart-Home-System mit Automatisierung, Sicherheit, KI-Unterstützung und Fernverwaltung von Geräten, inkl. Sprachsteuerung, Bilderkennung und benutzerfreundlicher Oberfläche." },
     { "title": "KiAuto-Windows", "text": "<br>KiAuto-Windows ist eine Windows-Version von KiAuto, die ich teilweise angepasst habe.<br>KiAuto wird hauptsächlich zum Exportieren verschiedener Ansichten wie Schaltpläne im KiCad EDA-Programm verwendet.", "link": "https://github.com/StefanRautner/KiAuto-Windows" },
     { "title": "TinyWhatsApp", "text": "<br>TinyWhatsApp ist eine plattformübergreifende Chat-Anwendung, die mit einem zentralen Server und einer Datenbank kommuniziert.", "link": "https://github.com/StefanRautner/ChatProgram" },
-    { "title": "MBot-Controller", "text": "<br>WebApp und Zwischendienst zur Steuerung und Anzeige von Sensordaten eines MBot2.<br>Der MBot2 wird über WLAN gesteuert.", "link": "https://github.com/StefanRautner/MBotController" }
+    { "title": "MBot-Controller", "text": "<br>WebApp und Zwischendienst zur Steuerung und Anzeige von Sensordaten eines MBot2.<br>Der MBot2 wird über WLAN gesteuert.", "link": "https://github.com/StefanRautner/MBotController" },
+    { "title": "Loeschzeit", "text": "Loeschzeit ist eine App zum Zeitmessen von Teilnehmern bei Kinderzielspritzen, verwendet als Attraktion bei Festen von Freiwilligen Feuerwehren." },
+    { "title": "SnackSignal", "text": "SnackSignal ist ein Bestellsystem für Vereinsfeste, das Bargeld- und Kartenzahlung unterstützt und Bestellungen effizient verwaltet." },
+    { "title": "Nexus", "text": "Nexus integriert Loeschzeit und SnackSignal mit Monitoring, automatisierten Tests, Metriken in Graphen, HTTPS-Verschlüsselung, Uptime-Überwachung, Orchestrator, Stripe-Payment-Pages und Reverse-Tunnel." }
   ],
   
   "certificates": [
@@ -85,6 +88,7 @@
     { "title": "C++", "text": "Fortgeschritten" },
     { "title": "Java", "text": "Fortgeschritten" },
     { "title": "JavaScript", "text": "Mittelstufe" },
+    { "title": "Dart", "text": "Advanced" },
     { "title": "Python", "text": "Fortgeschritten" },
     { "title": "Micropython", "text": "Fortgeschritten" },
     { "title": "PHP", "text": "Mittelstufe" },

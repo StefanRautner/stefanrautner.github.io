@@ -26,7 +26,10 @@
     { "title": "SparkNet", "text": "<br>A cross-platform smart home system integrating automation, security, AI assistance, and remote device management, with features like voice control, image recognition, and a user-friendly interface." },
     { "title": "KiAuto-Windows", "text": "<br>KiAuto-Windows is a version of KiAuto that I partly adapted for Windows.<br>KiAuto is primarily used for exporting various views such as circuit disgrams in the KiCad EDA Program.", "link": "https://github.com/StefanRautner/KiAuto-Windows" },
     { "title": "TinyWhatsApp", "text": "<br>TinyWhatsApp is a multi-platform chat application that communicates with a central server and a database.", "link": "https://github.com/StefanRautner/ChatProgram" },
-    { "title": "MBot-Controller", "text": "<br>WebApp and intermediate server for controlling and displaying sensor data of an MBot2.<br>The MBot2 is controlled via a WLAN connection.", "link": "https://github.com/StefanRautner/MBotController" }
+    { "title": "MBot-Controller", "text": "<br>WebApp and intermediate server for controlling and displaying sensor data of an MBot2.<br>The MBot2 is controlled via a WLAN connection.", "link": "https://github.com/StefanRautner/MBotController" },
+    { "title": "Loeschzeit", "text": "Loeschzeit is an app for timing participants in children's water-spraying competitions, used as an attraction at volunteer fire department festivals." },
+    { "title": "SnackSignal", "text": "SnackSignal is an ordering system for club festivals, supporting cash and card payments and efficiently managing orders." },
+    { "title": "Nexus", "text": "Nexus integrates Loeschzeit and SnackSignal with monitoring, automated tests, metrics in graphs, HTTPS encryption, uptime monitoring, an orchestrator, Stripe payment pages, and a reverse tunnel." }
   ],
   
   "certificates": [
@@ -85,6 +88,7 @@
     { "title": "C++", "text": "Advanced" },
     { "title": "Java", "text": "Advanced" },
     { "title": "JavaScript", "text": "Intermediate" },
+    { "title": "Dart", "text": "Advanced" },
     { "title": "Python", "text": "Advanced" },
     { "title": "Micropython", "text": "Advanced" },
     { "title": "PHP", "text": "Intermediate" },
