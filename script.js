@@ -130,7 +130,7 @@ langOptions.forEach(option => {
 
 // Load default language
 document.addEventListener('DOMContentLoaded', async () => {
-    langOptions[0].click(); // Click first option (default: EN)
+    langOptions[1].click(); // Click first option (default: EN)
 });
 
 // Contact buttons

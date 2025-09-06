@@ -13,7 +13,7 @@
   "nav_skills": "Fähigkeiten",
   "nav_contact": "Kontakt",
   "hero_title": "Hallo! Ich entwickle intelligente und sichere digitale Lösungen",
-  "hero_text": "``Debugging ist wie der Detektiv in einem Krimi, in dem man auch der Mörder ist.`` - Filipe Fortes",
+  "hero_text": "``Debugging ist, als wäre man der Detektiv in einem Krimi, in dem man auch der Mörder ist.`` - Filipe Fortes",
   "hero_btn": "Projekte ansehen",
   "about_text": "Ich bin Stefan Rautner, 19 Jahre alt und entwickle smarte Haussysteme & Automatisierungen, die zuverlässig, sicher und alltagstauglich sind",
   "contact_title": "Kontakt",
@@ -29,7 +29,7 @@
     { "title": "MBot-Controller", "text": "<br>WebApp und Zwischendienst zur Steuerung und Anzeige von Sensordaten eines MBot2.<br>Der MBot2 wird über WLAN gesteuert.", "link": "https://github.com/StefanRautner/MBotController" },
     { "title": "Loeschzeit", "text": "Loeschzeit ist eine App zum Zeitmessen von Teilnehmern bei Kinderzielspritzen, verwendet als Attraktion bei Festen von Freiwilligen Feuerwehren." },
     { "title": "SnackSignal", "text": "SnackSignal ist ein Bestellsystem für Vereinsfeste, das Bargeld- und Kartenzahlung unterstützt und Bestellungen effizient verwaltet." },
-    { "title": "Nexus", "text": "Nexus integriert Loeschzeit und SnackSignal mit Monitoring, automatisierten Tests, Metriken in Graphen, HTTPS-Verschlüsselung, Uptime-Überwachung, Orchestrator, Stripe-Payment-Pages und Reverse-Tunnel." }
+    { "title": "Nexus", "text": "Nexus integriert Loeschzeit und SnackSignal mit Überwachungssystemen, automatisierten Tests, Metriken in Graphen, HTTPS-Verschlüsselung, Uptime-Überwachung, Orchestrator, Stripe-Payment-Pages und Reverse-Tunnel." }
   ],
   
   "certificates": [
