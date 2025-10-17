@@ -264,7 +264,19 @@ const canvas = document.createElement('canvas');
 particlesContainer.appendChild(canvas);
 const ctx = canvas.getContext('2d');
 
-// Scale canvas for high-resolution displays
+// --- Device Performance Detection ---
+const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+
+// --- Network parameters (dynamic for performance) ---
+const nodeCount = isMobile ? 35 : 100; // fewer points on mobile
+const connectionDistance = isMobile ? 120 : 240; // shorter links on mobile
+const maxFPS = isMobile ? 30 : 60; // limit framerate for weak CPUs
+const colors = ['#00ffff', '#00ff99'];
+
+let nodes = [];
+let lastFrameTime = 0;
+
+// --- Resize canvas for device pixel ratio ---
 function resizeCanvas() {
     const scale = window.devicePixelRatio || 1;
     canvas.width = window.innerWidth * scale;
@@ -274,66 +286,69 @@ function resizeCanvas() {
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 
-// --- Network parameters ---
-const nodeCount = 100;
-const connectionDistance = 240;
-const nodes = [];
-const colors = ['#00ffff', '#00ff99']; // Light blue + light green
-
-// Create nodes
-for (let i = 0; i < nodeCount; i++) {
-    nodes.push({
-        x: Math.random() * window.innerWidth,
-        y: Math.random() * window.innerHeight,
-        vx: (Math.random() - 0.5) * 1.2, // Faster movement
-        vy: (Math.random() - 0.5) * 1.2,
-        radius: 2 + Math.random() * 2,
-        color: colors[Math.floor(Math.random() * colors.length)]
-    });
+// --- Create nodes ---
+function createNodes() {
+    nodes = [];
+    for (let i = 0; i < nodeCount; i++) {
+        nodes.push({
+            x: Math.random() * window.innerWidth,
+            y: Math.random() * window.innerHeight,
+            vx: (Math.random() - 0.5) * 0.8, // slower on mobile
+            vy: (Math.random() - 0.5) * 0.8,
+            radius: 1.5 + Math.random() * 2,
+            color: colors[Math.floor(Math.random() * colors.length)]
+        });
+    }
 }
+createNodes();
 
 // --- Draw function ---
-function draw() {
-    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight); // Transparent background
+function draw(timestamp) {
+    // Limit frame rate on mobile
+    if (isMobile && timestamp - lastFrameTime < 1000 / maxFPS) {
+        requestAnimationFrame(draw);
+        return;
+    }
+    lastFrameTime = timestamp;
+
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
     // Draw connecting lines
     for (let i = 0; i < nodes.length; i++) {
+        const a = nodes[i];
         for (let j = i + 1; j < nodes.length; j++) {
-            const dx = nodes[i].x - nodes[j].x;
-            const dy = nodes[i].y - nodes[j].y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
+            const b = nodes[j];
+            const dx = a.x - b.x;
+            const dy = a.y - b.y;
+            const dist = dx * dx + dy * dy;
 
-            if (dist < connectionDistance) {
-                const opacity = 1 - dist / connectionDistance;
-                const gradient = ctx.createLinearGradient(
-                    nodes[i].x, nodes[i].y,
-                    nodes[j].x, nodes[j].y
-                );
+            // Use squared distance for faster comparison
+            if (dist < connectionDistance * connectionDistance) {
+                const opacity = 1 - Math.sqrt(dist) / connectionDistance;
+                ctx.beginPath();
+                const gradient = ctx.createLinearGradient(a.x, a.y, b.x, b.y);
                 gradient.addColorStop(0, `rgba(0,255,255,${opacity * 0.3})`);
                 gradient.addColorStop(1, `rgba(0,255,153,${opacity * 0.3})`);
-
-                ctx.beginPath();
                 ctx.strokeStyle = gradient;
                 ctx.lineWidth = 1;
-                ctx.shadowBlur = 15;
+                ctx.shadowBlur = 10;
                 ctx.shadowColor = '#00ffff';
-                ctx.moveTo(nodes[i].x, nodes[i].y);
-                ctx.lineTo(nodes[j].x, nodes[j].y);
+                ctx.moveTo(a.x, a.y);
+                ctx.lineTo(b.x, b.y);
                 ctx.stroke();
             }
         }
     }
 
-    // Draw nodes
+    // Draw nodes and update positions
     for (let node of nodes) {
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
         ctx.fillStyle = node.color;
-        ctx.shadowBlur = 20;
+        ctx.shadowBlur = 15;
         ctx.shadowColor = node.color;
         ctx.fill();
 
-        // Update position
         node.x += node.vx;
         node.y += node.vy;
 
@@ -345,7 +360,8 @@ function draw() {
     requestAnimationFrame(draw);
 }
 
-draw();
+requestAnimationFrame(draw);
+
 
 // ================================================
 // === SMOOTH SCROLLING (WITH HEADER OFFSET) =======
