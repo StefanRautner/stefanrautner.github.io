@@ -304,9 +304,6 @@ createNodes();
 
 // --- Draw function ---
 function draw(timestamp) {
-    // --- FPS limiter ---
-    const maxFPS = isMobile ? 100 : 50;
-
     // Limit frame rate on mobile
     if (isMobile && timestamp - lastFrameTime < 1000 / maxFPS) {
         requestAnimationFrame(draw);
