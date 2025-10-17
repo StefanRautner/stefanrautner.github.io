@@ -1,82 +1,104 @@
-let translations = {}; // Store all translations
+// ================================================
+// === LANGUAGE HANDLING / TRANSLATION SYSTEM ======
+// ================================================
 
-// Load language JSON dynamically
+let translations = {}; // Holds all loaded translation data
+
+// Dynamically load a language JSON file and update UI
 async function loadLanguage(lang) {
-    const response = await fetch(`${lang}.json`); // Fetch the JSON file
-    translations = await response.json(); // Parse JSON
-    updateText(); // Update all text elements
-    loadProjects(); // Load projects section
+    const response = await fetch(`${lang}.json`); // Fetch translation file
+    translations = await response.json(); // Parse JSON into object
+    updateText(); // Replace all text with translations
+    loadProjects(); // Load project section
     loadCertificates(); // Load certificates section
-    loadSchoolWork(); // Load schoolWork section
+    loadSchoolWork(); // Load school work section
     loadVoluntary(); // Load voluntary work section
     loadSkills(); // Load skills section
 }
 
-// Update all text elements
+// Update text of all elements with "data-key" attribute
 function updateText() {
     document.querySelectorAll('[data-key]').forEach(el => {
-        const key = el.getAttribute('data-key'); // Get translation key
-        if (translations[key]) el.innerText = translations[key]; // Set translated text
+        const key = el.getAttribute('data-key'); // Translation key
+        if (translations[key]) el.innerText = translations[key]; // Replace content
     });
 }
 
-// Projects
+// ================================================
+// === PROJECTS SECTION ============================
+// ================================================
+
 function loadProjects() {
-    const projectsContainer = document.querySelector('.projects'); // Get container
-    projectsContainer.innerHTML = ''; // Clear previous content
+    const projectsContainer = document.querySelector('.projects'); // Project container
+    projectsContainer.innerHTML = ''; // Clear previous items
+
     translations.projects.forEach(p => {
         const card = document.createElement('div'); // Create project card
         card.className = 'project-card';
-        card.innerHTML = `<h4>${p.title}</h4><p>${p.text}</p>`; // Add title and text
+        card.innerHTML = `<h4>${p.title}</h4><p>${p.text}</p>`; // Set content
 
-        // Make project card clickable if link exists
+        // Make card clickable if link exists
         card.style.cursor = 'pointer';
         if (p.link) {
-            card.addEventListener('click', () => {
-                window.open(p.link, '_blank'); // Open link in new tab
-            });
+            card.addEventListener('click', () => window.open(p.link, '_blank'));
         }
 
-        projectsContainer.appendChild(card); // Append card
+        projectsContainer.appendChild(card); // Add to DOM
     });
 }
 
-// Certificates
+// ================================================
+// === CERTIFICATES SECTION ========================
+// ================================================
+
 function loadCertificates() {
-    const certContainer = document.querySelector('.school-work'); // Get container
-    certContainer.innerHTML = ''; // Clear previous content
+    const certContainer = document.querySelector('.school-work'); // Target container
+    certContainer.innerHTML = ''; // Clear previous items
+
     translations.certificates.forEach(c => {
-        const li = document.createElement('li'); // Create list item
-        li.innerText = c; // Set text
-        certContainer.appendChild(li); // Append item
+        const li = document.createElement('li');
+        li.innerText = c;
+        certContainer.appendChild(li);
     });
 }
 
-// School Work
+// ================================================
+// === SCHOOL WORK SECTION =========================
+// ================================================
+
 function loadSchoolWork() {
-    const certContainer = document.querySelector('.certificates'); // Get container
-    certContainer.innerHTML = ''; // Clear previous content
+    const certContainer = document.querySelector('.certificates'); // Target container
+    certContainer.innerHTML = ''; // Clear previous items
+
     translations.certificates.forEach(c => {
-        const li = document.createElement('li'); // Create list item
-        li.innerText = c; // Set text
-        certContainer.appendChild(li); // Append item
+        const li = document.createElement('li');
+        li.innerText = c;
+        certContainer.appendChild(li);
     });
 }
 
-// Voluntary Work
+// ================================================
+// === VOLUNTARY WORK SECTION ======================
+// ================================================
+
 function loadVoluntary() {
-    const volContainer = document.querySelector('.voluntary'); // Get container
-    volContainer.innerHTML = ''; // Clear previous content
+    const volContainer = document.querySelector('.voluntary');
+    volContainer.innerHTML = ''; // Clear previous items
+
     translations.voluntary.forEach(v => {
-        const li = document.createElement('li'); // Create list item
-        li.innerText = v; // Set text
-        volContainer.appendChild(li); // Append item
+        const li = document.createElement('li');
+        li.innerText = v;
+        volContainer.appendChild(li);
     });
 }
 
-// Skills
+// ================================================
+// === SKILLS SECTION ==============================
+// ================================================
+
 function loadSkills() {
-    const plContainer = document.querySelector('.prog-languages'); // Programming languages container
+    // --- Programming Languages ---
+    const plContainer = document.querySelector('.prog-languages');
     plContainer.innerHTML = '';
     translations.skills.prog_languages.forEach(l => {
         const li = document.createElement('li');
@@ -84,7 +106,8 @@ function loadSkills() {
         plContainer.appendChild(li);
     });
 
-    const fwContainer = document.querySelector('.frameworks'); // Frameworks container
+    // --- Frameworks ---
+    const fwContainer = document.querySelector('.frameworks');
     fwContainer.innerHTML = '';
     translations.skills.frameworks.forEach(f => {
         const li = document.createElement('li');
@@ -92,7 +115,8 @@ function loadSkills() {
         fwContainer.appendChild(li);
     });
 
-    const dbContainer = document.querySelector('.databases'); // Databases container
+    // --- Databases ---
+    const dbContainer = document.querySelector('.databases');
     dbContainer.innerHTML = '';
     translations.skills.databases.forEach(d => {
         const li = document.createElement('li');
@@ -100,7 +124,8 @@ function loadSkills() {
         dbContainer.appendChild(li);
     });
 
-    const nlContainer = document.querySelector('.natural-languages'); // Natural languages container
+    // --- Natural Languages ---
+    const nlContainer = document.querySelector('.natural-languages');
     nlContainer.innerHTML = '';
     translations.skills.natural_languages.forEach(n => {
         const li = document.createElement('li');
@@ -109,68 +134,86 @@ function loadSkills() {
     });
 }
 
-// Language switcher
-const langBtn = document.querySelector('.lang-btn'); // Button to toggle dropdown
-const langDropdown = document.querySelector('.lang-dropdown'); // Dropdown menu
-const langOptions = document.querySelectorAll('.lang-option'); // Each language option
+// ================================================
+// === LANGUAGE SWITCHER ===========================
+// ================================================
 
-langBtn.addEventListener('click', () => langDropdown.classList.toggle('active')); // Toggle dropdown
+const langBtn = document.querySelector('.lang-btn');
+const langDropdown = document.querySelector('.lang-dropdown');
+const langOptions = document.querySelectorAll('.lang-option');
+
+// Toggle dropdown on button click
+langBtn.addEventListener('click', () => langDropdown.classList.toggle('active'));
+
+// Close dropdown when clicking outside
 document.addEventListener('click', (e) => {
-    if (!langDropdown.contains(e.target)) langDropdown.classList.remove('active'); // Close dropdown if clicked outside
+    if (!langDropdown.contains(e.target)) langDropdown.classList.remove('active');
 });
 
+// Load selected language on option click
 langOptions.forEach(option => {
     option.addEventListener('click', async () => {
-        const lang = option.getAttribute('data-lang'); // Get selected language
-        langBtn.textContent = lang.toUpperCase(); // Update button text
-        await loadLanguage(lang); // Load selected language
-        langDropdown.classList.remove('active'); // Close dropdown
+        const lang = option.getAttribute('data-lang');
+        langBtn.textContent = lang.toUpperCase();
+        await loadLanguage(lang);
+        langDropdown.classList.remove('active');
     });
 });
 
-// Load default language
+// Load default language on startup
 document.addEventListener('DOMContentLoaded', async () => {
-    langOptions[1].click(); // Click first option (default: EN)
+    langOptions[1].click(); // Default: English
 });
 
-// Contact buttons
+// ================================================
+// === CONTACT BUTTONS =============================
+// ================================================
+
 document.getElementById('emailBtn').addEventListener('click', () => {
-    window.location.href = 'mailto:stefan.rautner06@gmail.com'; // Open mail client
-});
-document.getElementById('githubBtn').addEventListener('click', () => {
-    window.open('https://github.com/StefanRautner', '_blank'); // Open GitHub in new tab
+    window.location.href = 'mailto:stefan.rautner06@gmail.com';
 });
 
-// Smooth scrolling
+document.getElementById('githubBtn').addEventListener('click', () => {
+    window.open('https://github.com/StefanRautner', '_blank');
+});
+
+// ================================================
+// === SMOOTH SCROLLING ============================
+// ================================================
+
 document.querySelectorAll('nav a, .btn').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth' // Smooth scroll to target
+            behavior: 'smooth'
         });
     });
 });
 
-function loadCards(sectionClass, items) {
-    const container = document.querySelector(`.${sectionClass}`); // Get container
-    container.innerHTML = ''; // Clear previous content
-    items.forEach(item => {
-        const card = document.createElement('div'); // Create card
-        card.className = 'card';
-        card.innerHTML = `<h4>${item.title}</h4><p>${item.text}</p>`; // Add content
+// ================================================
+// === GENERIC CARD LOADER =========================
+// ================================================
 
-        // Make card clickable if link exists
+function loadCards(sectionClass, items) {
+    const container = document.querySelector(`.${sectionClass}`);
+    container.innerHTML = ''; // Clear previous
+
+    items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `<h4>${item.title}</h4><p>${item.text}</p>`;
+
+        // Open link in new tab if available
         card.style.cursor = 'pointer';
         card.addEventListener('click', () => {
-            if (item.link) {
-                window.open(item.link, '_blank'); // Open link in new tab
-            }
+            if (item.link) window.open(item.link, '_blank');
         });
 
-        container.appendChild(card); // Append card
+        container.appendChild(card);
     });
 }
 
+// Load all sections after language update
 function loadAllSections() {
     if (translations.certificates) loadCards('certificates', translations.certificates);
     if (translations.voluntary) loadCards('voluntary', translations.voluntary);
@@ -181,75 +224,162 @@ function loadAllSections() {
     if (translations.databases) loadCards('databases', translations.databases);
 }
 
-// Call inside your loadLanguage function after updating text
+// ================================================
+// === REDEFINED LANGUAGE LOADER (MERGED LOGIC) ====
+// ================================================
+
 function loadLanguage(lang) {
     fetch(`${lang}.json`)
-        .then(res => res.json()) // Parse JSON
+        .then(res => res.json())
         .then(data => {
-            translations = data; // Save translations
-            updateText(); // Update text content
-            loadProjects(); // Load projects section
-            loadAllSections(); // Load other sections
+            translations = data;
+            updateText();
+            loadProjects();
+            loadAllSections();
         });
 }
 
-// Scroll to top button
+// ================================================
+// === SCROLL TO TOP BUTTON ========================
+// ================================================
+
 const scrollTopBtn = document.getElementById('scrollTopBtn');
+
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-        scrollTopBtn.style.display = 'block'; // Show button after scrolling
-    } else {
-        scrollTopBtn.style.display = 'none'; // Hide button
-    }
+    scrollTopBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
 });
+
 scrollTopBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' }); // Smooth scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// Particles effect
-const particlesContainer = document.querySelector('.particles');
-const particleCount = 30; // fewer particles
+// ================================================
+// === FAST FUTURISTIC NEURAL NETWORK BACKGROUND ===
+// ================================================
 
-for (let i = 0; i < particleCount; i++) {
-    const p = document.createElement('div'); // Create particle
-    p.style.left = `${Math.random() * 100}vw`; // Random horizontal position
-    p.style.top = `${Math.random() * 100}vh`; // Random vertical position
-    p.style.animationDuration = `${6 + Math.random() * 8}s`; // Random speed
-    const size = 2 + Math.random() * 3; // Random size
-    p.style.width = `${size}px`;
-    p.style.height = `${size}px`;
-    const colors = ['#4dd0e1', '#00ff99', '#ff00ff', '#ff4d00']; // Neon color variety
-    p.style.background = colors[Math.floor(Math.random() * colors.length)];
-    p.style.opacity = 0.6 + Math.random() * 0.4; // Twinkle effect
-    particlesContainer.appendChild(p); // Add to container
+const particlesContainer = document.querySelector('.particles');
+particlesContainer.innerHTML = ''; // Clear previous canvas
+
+const canvas = document.createElement('canvas');
+particlesContainer.appendChild(canvas);
+const ctx = canvas.getContext('2d');
+
+// Scale canvas for high-resolution displays
+function resizeCanvas() {
+    const scale = window.devicePixelRatio || 1;
+    canvas.width = window.innerWidth * scale;
+    canvas.height = window.innerHeight * scale;
+    ctx.setTransform(scale, 0, 0, scale, 0, 0);
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+// --- Network parameters ---
+const nodeCount = 100;
+const connectionDistance = 240;
+const nodes = [];
+const colors = ['#00ffff', '#00ff99']; // Light blue + light green
+
+// Create nodes
+for (let i = 0; i < nodeCount; i++) {
+    nodes.push({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        vx: (Math.random() - 0.5) * 1.2, // Faster movement
+        vy: (Math.random() - 0.5) * 1.2,
+        radius: 2 + Math.random() * 2,
+        color: colors[Math.floor(Math.random() * colors.length)]
+    });
 }
 
-// Smooth scrolling with header offset
+// --- Draw function ---
+function draw() {
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight); // Transparent background
+
+    // Draw connecting lines
+    for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+            const dx = nodes[i].x - nodes[j].x;
+            const dy = nodes[i].y - nodes[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < connectionDistance) {
+                const opacity = 1 - dist / connectionDistance;
+                const gradient = ctx.createLinearGradient(
+                    nodes[i].x, nodes[i].y,
+                    nodes[j].x, nodes[j].y
+                );
+                gradient.addColorStop(0, `rgba(0,255,255,${opacity * 0.3})`);
+                gradient.addColorStop(1, `rgba(0,255,153,${opacity * 0.3})`);
+
+                ctx.beginPath();
+                ctx.strokeStyle = gradient;
+                ctx.lineWidth = 1;
+                ctx.shadowBlur = 15;
+                ctx.shadowColor = '#00ffff';
+                ctx.moveTo(nodes[i].x, nodes[i].y);
+                ctx.lineTo(nodes[j].x, nodes[j].y);
+                ctx.stroke();
+            }
+        }
+    }
+
+    // Draw nodes
+    for (let node of nodes) {
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+        ctx.fillStyle = node.color;
+        ctx.shadowBlur = 20;
+        ctx.shadowColor = node.color;
+        ctx.fill();
+
+        // Update position
+        node.x += node.vx;
+        node.y += node.vy;
+
+        // Bounce off edges
+        if (node.x < 0 || node.x > window.innerWidth) node.vx *= -1;
+        if (node.y < 0 || node.y > window.innerHeight) node.vy *= -1;
+    }
+
+    requestAnimationFrame(draw);
+}
+
+draw();
+
+// ================================================
+// === SMOOTH SCROLLING (WITH HEADER OFFSET) =======
+// ================================================
+
 document.querySelectorAll('nav a, .btn').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
-        const headerOffset = document.querySelector('header').offsetHeight; // Account for fixed header
+        const headerOffset = document.querySelector('header').offsetHeight;
         const elementPosition = target.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.scrollY - headerOffset;
 
         window.scrollTo({
             top: offsetPosition,
-            behavior: 'smooth' // Smooth scroll
+            behavior: 'smooth'
         });
     });
 });
 
-// Hamburger toggle
+// ================================================
+// === HAMBURGER MENU HANDLING =====================
+// ================================================
+
 const hamburger = document.querySelector('.hamburger');
 const menuRight = document.querySelector('.menu-right');
 
+// Toggle menu visibility
 hamburger.addEventListener('click', () => {
-    menuRight.classList.toggle('active'); // slide menu
-    hamburger.classList.toggle('open'); // animate hamburger
+    menuRight.classList.toggle('active');
+    hamburger.classList.toggle('open');
 });
 
-// Close menu when a link or language option is clicked (mobile)
+// Close menu when clicking a link or language option
 menuRight.querySelectorAll('a, .lang-option').forEach(el => {
     el.addEventListener('click', () => {
         if (menuRight.classList.contains('active')) {

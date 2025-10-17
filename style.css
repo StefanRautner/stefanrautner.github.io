@@ -1,18 +1,18 @@
-/* Reset & basic styling for all elements */
+/* === Reset & Basic Setup === */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Ensure html and body take full width, prevent horizontal scroll */
+/* Ensure full-width layout and disable horizontal scroll */
 html,
 body {
     width: 100%;
     overflow-x: hidden;
 }
 
-/* Body styling with dark theme and custom font */
+/* === Global Body Styling === */
 body {
     font-family: 'Orbitron', sans-serif;
     background-color: #121212;
@@ -20,7 +20,7 @@ body {
     line-height: 1.6;
 }
 
-/* Subtle background pattern for tech/cyber feel */
+/* Subtle tech-style background pattern */
 body::before {
     content: '';
     position: fixed;
@@ -29,27 +29,26 @@ body::before {
     width: 100%;
     height: 100%;
     background-image: radial-gradient(#4dd0e1 1px, transparent 1px),
-        radial-gradient(#00ff99 1px, transparent 1px);
+                      radial-gradient(#00ff99 1px, transparent 1px);
     background-size: 40px 40px;
     opacity: 0.1;
     pointer-events: none;
     z-index: 0;
 }
 
-/* Particle effect container */
+/* === Particle Background === */
 .particles {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none;
-    /* particles won't block clicks */
+    pointer-events: none; /* allow clicks through particles */
     z-index: 0;
     overflow: hidden;
 }
 
-/* Individual particle styling and animation */
+/* Particle movement animation */
 .particles div {
     position: absolute;
     border-radius: 50%;
@@ -57,23 +56,12 @@ body::before {
 }
 
 @keyframes float {
-    0% {
-        transform: translateY(0) translateX(0);
-        opacity: 0.6;
-    }
-
-    50% {
-        transform: translateY(-40vh) translateX(15vw);
-        opacity: 0.3;
-    }
-
-    100% {
-        transform: translateY(-80vh) translateX(-10vw);
-        opacity: 0.6;
-    }
+    0% { transform: translateY(0) translateX(0); opacity: 0.6; }
+    50% { transform: translateY(-40vh) translateX(15vw); opacity: 0.3; }
+    100% { transform: translateY(-80vh) translateX(-10vw); opacity: 0.6; }
 }
 
-/* Header styling: fixed at top, flex layout */
+/* === Header === */
 header {
     position: fixed;
     top: 0;
@@ -84,21 +72,20 @@ header {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    padding: 1rem 2rem; /* oder 15px 30px */
+    padding: 1rem 2rem;
     background-color: #1a1a1a;
     border-bottom: 1px solid #4dd0e1;
     box-shadow: 0 0 10px rgba(77, 208, 225, 0.3);
     color: white;
 }
 
-
-/* Logo styling */
+/* Header logo */
 header h1 {
     color: #4dd0e1;
     font-size: 1.5rem;
 }
 
-/* Navigation styling */
+/* === Navigation === */
 nav {
     display: flex;
     flex-wrap: wrap;
@@ -112,7 +99,7 @@ nav a {
     transition: 0.3s;
 }
 
-/* Hover underline effect for nav links */
+/* Hover underline animation */
 nav a::after {
     content: '';
     position: absolute;
@@ -128,19 +115,19 @@ nav a:hover::after {
     width: 100%;
 }
 
-/* Language switcher container */
+/* === Language Switcher === */
 .lang-switcher {
     position: relative;
     margin-top: 0.5rem;
 }
 
-/* Language dropdown wrapper */
+/* Dropdown wrapper */
 .lang-dropdown {
     position: relative;
     display: inline-block;
 }
 
-/* Language button styling */
+/* Language button */
 .lang-btn {
     background: #121212;
     border: 2px solid #4dd0e1;
@@ -157,7 +144,7 @@ nav a:hover::after {
     color: #121212;
 }
 
-/* Dropdown options hidden by default */
+/* Dropdown options */
 .lang-options {
     display: none;
     position: absolute;
@@ -175,7 +162,7 @@ nav a:hover::after {
     display: block;
 }
 
-/* Individual language option styling */
+/* Language option buttons */
 .lang-option {
     display: block;
     width: 100%;
@@ -194,7 +181,7 @@ nav a:hover::after {
     color: #121212;
 }
 
-/* Hero section center-aligned */
+/* === Hero Section === */
 .hero {
     display: flex;
     flex-direction: column;
@@ -205,20 +192,17 @@ nav a:hover::after {
     text-align: center;
 }
 
-
-/* Hero title styling */
 .hero h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
     color: #4dd0e1;
 }
 
-/* Hero paragraph spacing */
 .hero p {
     margin-bottom: 2rem;
 }
 
-/* General button styling */
+/* Buttons */
 .btn {
     display: inline-block;
     padding: 0.7rem 1.5rem;
@@ -235,17 +219,16 @@ nav a:hover::after {
     color: #121212;
 }
 
-/* Section padding and width */
+/* === Section Layout === */
 section {
     padding: 4rem 2rem;
     max-width: 1200px;
     margin: auto;
     width: 100%;
     scroll-margin-top: 80px;
-    /* prevent header overlap when linking */
 }
 
-/* Anchor offset for fixed header */
+/* Prevent header overlap on anchor jump */
 section::before {
     content: "";
     display: block;
@@ -254,43 +237,38 @@ section::before {
     visibility: hidden;
 }
 
-/* Grid layout for projects */
+/* === Projects === */
 .projects {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
 }
 
-/* Individual project card styling */
-.project-card {
+/* Project and card base styling */
+.project-card,
+.card {
     background-color: #1a1a1a;
-    padding: 1.5rem;
-    border-radius: 10px;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.project-card, .card {
-    border: 1px solid #4dd0e1; /* Neon-Blau wie Partikel */
+    border: 1px solid #4dd0e1;
     border-radius: 8px;
     padding: 15px;
     margin-bottom: 15px;
-}
-
-.project-card:hover, .card:hover {
-    border-color: #3cff00; /* Farbe ändert sich beim Hover */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transform: translateY(-2px);
     transition: all 0.3s ease;
 }
 
-
+/* Hover highlight */
+.project-card:hover,
+.card:hover {
+    border-color: #3cff00;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
 
 .project-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 5px 15px rgba(77, 208, 225, 0.4);
 }
 
-/* Footer styling */
+/* === Footer === */
 footer {
     text-align: center;
     padding: 2rem;
@@ -298,7 +276,7 @@ footer {
     border-top: 1px solid #4dd0e1;
 }
 
-/* Container for contact buttons */
+/* === Contact Links === */
 .contact-links {
     display: flex;
     gap: 1rem;
@@ -306,7 +284,7 @@ footer {
     margin-top: 1rem;
 }
 
-/* Hover animation for contact buttons */
+/* Button hover glow */
 .contact-links .btn::after {
     content: '';
     position: absolute;
@@ -328,7 +306,7 @@ footer {
     background-color: #4dd0e1;
 }
 
-/* GitHub button special styling */
+/* GitHub button styling */
 .github-btn {
     border-color: #333;
     background-color: #24292e;
@@ -345,7 +323,7 @@ footer {
     border-color: #4dd0e1;
 }
 
-/* GitHub Stats */
+/* === GitHub Stats === */
 .cards-container.github-stats {
     display: flex;
     flex-direction: column;
@@ -359,8 +337,7 @@ footer {
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-
-/* Responsive adjustments for smaller screens */
+/* === Responsive Design === */
 @media (max-width: 768px) {
     header {
         flex-direction: column;
@@ -381,16 +358,11 @@ footer {
         margin-top: 0.5rem;
     }
 
-    .hero h2 {
-        font-size: 1.7rem;
-    }
-
-    .hero p {
-        font-size: 0.95rem;
-    }
+    .hero h2 { font-size: 1.7rem; }
+    .hero p { font-size: 0.95rem; }
 }
 
-/* Scroll-to-top button */
+/* === Scroll-To-Top Button === */
 .scroll-top {
     position: fixed;
     bottom: 20px;
@@ -406,14 +378,12 @@ footer {
     display: none;
     transition: all 0.3s ease;
     box-shadow: 0 0 15px rgba(77, 208, 225, 0.6);
-
-    /* center the arrow */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Generic grid container for cards */
+/* === Generic Card Grid === */
 .cards-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -421,7 +391,7 @@ footer {
     margin-top: 2rem;
 }
 
-/* Individual card styling for skills, certificates, etc. */
+/* Card styling for skills, certificates, etc. */
 .card {
     background-color: #1a1a1a;
     padding: 1.5rem;
@@ -445,15 +415,7 @@ footer {
     color: #e0e0e0;
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    padding: 15px 30px;
-    color: white;
-}
-
+/* === Navigation & Hamburger Menu === */
 .menu-right {
     display: flex;
     align-items: center;
@@ -485,12 +447,12 @@ header {
     transition: all 0.3s ease;
 }
 
-/* Mobile Responsive */
+/* Mobile Navigation */
 @media (max-width: 768px) {
     .menu-right {
         position: fixed;
         top: 0;
-        right: -250px; /* hidden by default */
+        right: -250px;
         height: 100%;
         width: 250px;
         background-color: rgba(0,0,0,0.95);
@@ -502,9 +464,7 @@ header {
         z-index: 999;
     }
 
-    .menu-right.active {
-        right: 0; /* slide in */
-    }
+    .menu-right.active { right: 0; }
 
     .nav-links {
         flex-direction: column;
@@ -512,18 +472,18 @@ header {
         gap: 15px;
     }
 
-    .hamburger {
-        display: flex;
-    }
+    .hamburger { display: flex; }
 }
 
-/* Hamburger animation */
+/* Hamburger animation (open state) */
 .hamburger.open div:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
 }
+
 .hamburger.open div:nth-child(2) {
     opacity: 0;
 }
+
 .hamburger.open div:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -5px);
 }
