@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f6e60bd0-4eae-47fc-81a5-f98add4b80a3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TODO" beforeDir="false" afterPath="$PROJECT_DIR$/TODO" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/de.json" beforeDir="false" afterPath="$PROJECT_DIR$/de.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/en.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
