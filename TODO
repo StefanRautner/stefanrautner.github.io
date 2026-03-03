@@ -1,6 +1,11 @@
-,
-    {
+,{
       "title": "EDV/IT Beauftragter FF-Kuchl",
       "text": "Zuständig für die Betreuung, Wartung und Weiterentwicklung der IT- und EDV-Systeme der Freiwilligen Feuerwehr Kuchl.<br>Dazu zählen Webseite, interne Softwarelösungen, digitale Einsatzunterstützung sowie technische Beratung.",
+      "link": "https://www.ff-kuchl.at"
+    }
+
+,{
+      "title": "IT Coordinator – Volunteer Fire Department Kuchl",
+      "text": "Responsible for the maintenance, administration and further development of the IT and EDP systems of the Volunteer Fire Brigade Kuchl.<br>This includes the website, internal software solutions, digital operational support and technical consulting.",
       "link": "https://www.ff-kuchl.at"
     }
