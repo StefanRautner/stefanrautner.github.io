@@ -1,167 +1,176 @@
 <!DOCTYPE html>
-<html lang="de">
-
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <!-- Google Font for futuristic/cyber look -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stefan Rautner – Portfolio</title>
+  <meta name="description" content="Stefan Rautner – Developer of smart home systems, security tools, and automation software.">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-<!-- Header with navigation, hamburger menu, language switcher, and particles effect -->
-<header>
-    <div class="particles"></div> <!-- Animated background particles -->
-    <h1>Stefan Rautner</h1>
 
-    <!-- Hamburger for mobile menu -->
-    <div class="hamburger">
-        <div></div> <!-- top line -->
-        <div></div> <!-- middle line -->
-        <div></div> <!-- bottom line -->
+<!-- Canvas for animated particles (performant, GPU-composited) -->
+<canvas id="bgCanvas" aria-hidden="true"></canvas>
+
+<!-- ─── HEADER ─────────────────────────────────────────────────────────── -->
+<header id="header">
+  <a href="#hero" class="wordmark">Stefan Rautner</a>
+
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="menu-right" id="menuRight">
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#hero"         data-key="nav_home"></a>
+      <a href="#about"        data-key="nav_about"></a>
+      <a href="#projects"     data-key="nav_projects"></a>
+      <a href="#certificates" data-key="nav_certificates"></a>
+      <a href="#school-work"  data-key="nav_school_work"></a>
+      <a href="#voluntary"    data-key="nav_voluntary"></a>
+      <a href="#skills"       data-key="nav_skills"></a>
+      <a href="#contact"      data-key="nav_contact"></a>
+    </nav>
+
+    <div class="header-controls">
+      <!-- Theme toggle -->
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle light/dark mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+
+      <!-- Language toggle (direct swap, no dropdown) -->
+      <button class="lang-btn" id="langToggle" aria-label="Switch language">EN</button>
     </div>
-
-    <!-- Right-side menu container including nav links and language switcher -->
-    <div class="menu-right">
-        <nav class="nav-links">
-            <!-- Navigation links using data-key for translations -->
-            <a href=".hero" data-key="nav_home"></a>
-            <a href="#about" data-key="nav_about"></a>
-            <a href="#projects" data-key="nav_projects"></a>
-            <a href="#certificates" data-key="nav_certificates"></a>
-            <a href="#voluntary" data-key="nav_voluntary"></a>
-            <a href="#frameworks" data-key="nav_skills"></a>
-            <a href="#contact" data-key="nav_contact"></a>
-        </nav>
-
-        <!-- Language switcher inside the hamburger menu -->
-        <div class="lang-switcher">
-            <div class="lang-dropdown">
-                <button class="lang-btn">EN</button> <!-- Current language -->
-                <div class="lang-options">
-                    <button class="lang-option" data-lang="en">English</button>
-                    <button class="lang-option" data-lang="de">Deutsch</button>
-                </div>
-            </div>
-        </div>
-    </div>
+  </div>
 </header>
 
-<!-- Hero Section / Landing area -->
-<section class="hero">
-    <h2 data-key="hero_title"></h2> <!-- Hero title -->
-    <p data-key="hero_text"></p> <!-- Hero description -->
-    <a href="#projects" class="btn" data-key="hero_btn"></a> <!-- Hero CTA button -->
-</section>
-
-<!-- About Section -->
-<section id="about">
-    <h3 data-key="nav_about"></h3>
-    <p data-key="about_text"></p>
-</section>
-
-<!-- Projects Section -->
-<section id="projects">
-    <h3 data-key="nav_projects"></h3>
-    <div class="projects"></div> <!-- Project cards loaded dynamically -->
-</section>
-
-<!-- Certificates Section -->
-<section id="certificates">
-    <h3 data-key="nav_certificates"></h3>
-    <div class="cards-container certificates"></div> <!-- Certificates cards with optional links -->
-</section>
-
-<!-- School Work Section -->
-<section id="school-work">
-    <h3 data-key="nav_school_work"></h3>
-    <div class="cards-container school-work"></div> <!-- Cards for school projects or assignments -->
-</section>
-
-<!-- Voluntary Work Section -->
-<section id="voluntary">
-    <h3 data-key="nav_voluntary"></h3>
-    <div class="cards-container voluntary"></div> <!-- Voluntary work cards -->
-</section>
-
-<!-- Frameworks / Skills Section -->
-<section id="frameworks">
-    <h3 data-key="nav_frameworks"></h3>
-    <div class="cards-container frameworks"></div> <!-- Skills cards -->
-</section>
-
-<!-- Natural Languages Section -->
-<section id="languages">
-    <h3 data-key="nav_languages"></h3>
-    <div class="cards-container languages"></div> <!-- Natural languages cards -->
-</section>
-
-<!-- Programming Languages Section -->
-<section id="programming">
-    <h3 data-key="nav_programming"></h3>
-    <div class="cards-container programming"></div> <!-- Programming languages cards -->
-</section>
-
-<!-- Databases Section -->
-<section id="databases">
-    <h3 data-key="nav_databases"></h3>
-    <div class="cards-container databases"></div> <!-- Database skills cards -->
-</section>
-
-<!-- GitHub Stats Section -->
-<section id="github-stats">
-    <h3 data-key="nav_github_stats"></h3>
-    <div class="cards-container github-stats">
-        <!-- Profile Details Card -->
-        <div class="github-card">
-            <img
-                    src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=StefanRautner&theme=react"
-                    alt="GitHub Stats"
-            />
-        </div>
-
-        <!-- Streak Stats Card -->
-        <div class="github-card">
-            <img
-                    src="https://streak-stats.demolab.com?user=StefanRautner&theme=react"
-                    alt="GitHub Streak"
-            />
-        </div>
-
-        <!-- Top Languages Card -->
-        <div class="github-card">
-            <img
-                    src="https://github-readme-stats.vercel.app/api/top-langs/?username=StefanRautner&layout=compact&theme=react"
-                    alt="Top Languages"
-            />
-        </div>
+<!-- ─── HERO ──────────────────────────────────────────────────────────── -->
+<section id="hero" class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow mono">// hello world</p>
+    <h1 class="hero-title" data-key="hero_title"></h1>
+    <p class="hero-quote mono" data-key="hero_text"></p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn" data-key="hero_btn"></a>
+      <a href="#contact" class="btn btn--ghost" data-key="hero_contact"></a>
     </div>
+  </div>
 </section>
 
+<!-- ─── ABOUT ─────────────────────────────────────────────────────────── -->
+<section id="about">
+  <div class="section-inner">
+    <h2 class="section-title" data-key="nav_about"></h2>
+    <p class="about-text" data-key="about_text"></p>
+  </div>
+</section>
 
-<!-- Contact Section -->
+<!-- ─── PROJECTS ──────────────────────────────────────────────────────── -->
+<section id="projects">
+  <div class="section-inner">
+    <h2 class="section-title" data-key="nav_projects"></h2>
+    <div class="projects-grid" id="projectsGrid"></div>
+  </div>
+</section>
+
+<!-- ─── CERTIFICATES ──────────────────────────────────────────────────── -->
+<section id="certificates">
+  <div class="section-inner">
+    <h2 class="section-title" data-key="nav_certificates"></h2>
+    <div class="cards-grid" id="certificatesGrid"></div>
+  </div>
+</section>
+
+<!-- ─── SCHOOL / WORK ─────────────────────────────────────────────────── -->
+<section id="school-work">
+  <div class="section-inner">
+    <h2 class="section-title" data-key="nav_school_work"></h2>
+    <div class="timeline" id="schoolWorkTimeline"></div>
+  </div>
+</section>
+
+<!-- ─── VOLUNTARY ─────────────────────────────────────────────────────── -->
+<section id="voluntary">
+  <div class="section-inner">
+    <h2 class="section-title" data-key="nav_voluntary"></h2>
+    <div class="cards-grid cards-grid--wide" id="voluntaryGrid"></div>
+  </div>
+</section>
+
+<!-- ─── SKILLS ────────────────────────────────────────────────────────── -->
+<section id="skills">
+  <div class="section-inner">
+    <h2 class="section-title" data-key="nav_skills"></h2>
+    <div class="skills-layout">
+
+      <div class="skills-col">
+        <div class="skills-block">
+          <h3 class="skills-block-title" data-key="nav_programming"></h3>
+          <div class="skill-bars" id="programmingBars"></div>
+        </div>
+        <div class="skills-block">
+          <h3 class="skills-block-title" data-key="nav_databases"></h3>
+          <div class="skill-bars" id="databasesBars"></div>
+        </div>
+      </div>
+
+      <div class="skills-col">
+        <div class="skills-block">
+          <h3 class="skills-block-title" data-key="nav_frameworks"></h3>
+          <div class="skill-chips" id="frameworksChips"></div>
+        </div>
+        <div class="skills-block">
+          <h3 class="skills-block-title" data-key="nav_languages"></h3>
+          <div class="skill-chips" id="languagesChips"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── GITHUB STATS ──────────────────────────────────────────────────── -->
+<section id="github-stats">
+  <div class="section-inner">
+    <h2 class="section-title" data-key="nav_github_stats"></h2>
+    <div class="github-grid">
+      <div class="github-card">
+        <img loading="lazy" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=StefanRautner&theme=react" alt="GitHub Profile Details">
+      </div>
+      <div class="github-card">
+        <img loading="lazy" src="https://streak-stats.demolab.com?user=StefanRautner&theme=react" alt="GitHub Streak">
+      </div>
+      <div class="github-card">
+        <img loading="lazy" src="https://github-readme-stats.vercel.app/api/top-langs/?username=StefanRautner&layout=compact&theme=react" alt="Top Languages">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ───────────────────────────────────────────────────────── -->
 <section id="contact">
-    <h3 data-key="contact_title"></h3>
+  <div class="section-inner contact-inner">
+    <h2 class="section-title" data-key="contact_title"></h2>
     <p data-key="contact_text"></p>
     <div class="contact-links">
-        <a id="emailBtn" class="btn contact-btn" data-key="contact_btn"></a> <!-- Opens email client -->
-        <a id="githubBtn" class="btn github-btn" target="_blank">GitHub</a> <!-- Opens GitHub profile -->
+      <a id="emailBtn" class="btn" href="mailto:stefan@stefanrautner.at" data-key="contact_btn"></a>
+      <a id="githubBtn" class="btn btn--ghost" href="https://github.com/StefanRautner" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
+  </div>
 </section>
 
-<!-- Scroll to Top Button -->
-<button id="scrollTopBtn" class="scroll-top">↑</button> <!-- Button for scrolling back to top -->
-
-<!-- Footer -->
+<!-- ─── FOOTER ────────────────────────────────────────────────────────── -->
 <footer>
-    <span data-key="footer_text"></span> <!-- Footer text -->
+  <span data-key="footer_text"></span>
 </footer>
 
-<!-- Main JavaScript file -->
+<button id="scrollTopBtn" class="scroll-top" aria-label="Scroll to top">↑</button>
+
 <script src="script.js"></script>
 </body>
-
 </html>
