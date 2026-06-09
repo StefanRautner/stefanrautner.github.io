@@ -19,11 +19,13 @@
   "hero_contact": "Kontakt aufnehmen",
   "about_text": "Ich bin Stefan Rautner, 19 Jahre alt, und entwickle smarte Haussysteme & Automatisierungen, die zuverlässig, sicher und alltagstauglich sind.",
   "about_badges": [
-    { "icon": "🔥", "label": "Freiwilliger Feuerwehrmann" },
-    { "icon": "🏠", "label": "Smart Home Entwickler" },
-    { "icon": "🔐", "label": "Ethical Hacker" },
-    { "icon": "🎓", "label": "FH Salzburg" },
-    { "icon": "🤖", "label": "KI-Enthusiast" }
+    { "icon": "🔥", "label": "Aktives Mitglied Freiwillige Feuerwehr" },
+    { "icon": "🖥️", "label": "IT- & EDV-Betreuung Feuerwehr" },
+    { "icon": "🏠", "label": "Smart Home & Automatisierung" },
+    { "icon": "🔐", "label": "Cyber Security & Ethical Hacking" },
+    { "icon": "🌐", "label": "Netzwerk & Infrastruktur" },
+    { "icon": "🎓", "label": "Studium FH Salzburg" },
+    { "icon": "🤖", "label": "KI & Softwareentwicklung" }
   ],
   "stat_projects": "Projekte",
   "stat_certs": "Zertifikate",
@@ -40,9 +42,14 @@
   "projects": [
     {
       "title": "Löschwasserförderung",
-      "tag": "Flutter · Dart · Open Source",
+      "tag": "Flutter · Dart · Open Source · Feuerwehr",
       "text": "Multi-Plattform-App zur Berechnung von Relaisleitungen für österreichische Feuerwehren. Operativ im Einsatz.",
       "link": "https://github.com/fitforfire/loeschwasserfoerderung.at"
+    },
+    {
+      "title": "Umbau KDO-Fahrzeug",
+      "tag": "Mobil · Verlässlich · Feuerwehr",
+      "text": "EDV-Umbau im KDO-Fahrzeug bestehend aus Laptop, Bildschirm, Antennen und WLAN/SIM-Router zur mobilen Einsatzunterstützung und Kommunikation."
     },
     {
       "title": "SparkNet",
@@ -144,6 +151,7 @@
     { "title": "Englisch",  "text": "Fließend" }
   ],
   "programming": [
+    { "title": "C",           "text": "Fortgeschritten" },
     { "title": "C#",          "text": "Fortgeschritten" },
     { "title": "C++",         "text": "Fortgeschritten" },
     { "title": "Java",        "text": "Fortgeschritten" },

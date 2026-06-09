@@ -19,11 +19,13 @@
   "hero_contact": "Get in touch",
   "about_text": "I'm Stefan Rautner, 19 years old, and I develop smart home systems & automations that are reliable, secure, and practical for everyday life.",
   "about_badges": [
-    { "icon": "🔥", "label": "Volunteer Firefighter" },
-    { "icon": "🏠", "label": "Smart Home Dev" },
-    { "icon": "🔐", "label": "Ethical Hacker" },
-    { "icon": "🎓", "label": "FH Salzburg" },
-    { "icon": "🤖", "label": "AI Enthusiast" }
+    { "icon": "🔥", "label": "Active Member, Volunteer Fire Department" },
+    { "icon": "🖥️", "label": "IT & EDV Support for Fire Service" },
+    { "icon": "🏠", "label": "Smart Home & Automation" },
+    { "icon": "🔐", "label": "Cyber Security & Ethical Hacking" },
+    { "icon": "🌐", "label": "Networking & Infrastructure" },
+    { "icon": "🎓", "label": "Student at FH Salzburg" },
+    { "icon": "🤖", "label": "AI & Software Development" }
   ],
   "stat_projects": "Projects",
   "stat_certs": "Certificates",
@@ -40,9 +42,14 @@
   "projects": [
     {
       "title": "Löschwasserförderung",
-      "tag": "Flutter · Dart · Open Source",
+      "tag": "Flutter · Dart · Open Source · Fire Service",
       "text": "Multi-platform app for calculating relay lines for Austrian Fire Brigades. Used operationally in the field.",
       "link": "https://github.com/fitforfire/loeschwasserfoerderung.at"
+    },
+    {
+      "title": "KDO Vehicle Retrofit",
+      "tag": "Mobile · Infrastructure · Fire Service",
+      "text": "EDV retrofit of a KDO command vehicle including laptop, external display, antennas, and a WiFi/SIM router for mobile command support and field communication."
     },
     {
       "title": "SparkNet",
@@ -144,6 +151,7 @@
     { "title": "English", "text": "Fluent" }
   ],
   "programming": [
+    { "title": "C",           "text": "Advanced" },
     { "title": "C#",          "text": "Advanced" },
     { "title": "C++",         "text": "Advanced" },
     { "title": "Java",        "text": "Advanced" },
