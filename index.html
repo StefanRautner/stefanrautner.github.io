@@ -13,12 +13,15 @@
 </head>
 <body>
 
-<!-- Canvas for animated particles (performant, GPU-composited) -->
+<!-- Cursor glow -->
+<div class="cursor-glow" aria-hidden="true"></div>
+
+<!-- Animated particle canvas -->
 <canvas id="bgCanvas" aria-hidden="true"></canvas>
 
 <!-- ─── HEADER ─────────────────────────────────────────────────────────── -->
 <header id="header">
-  <a href="#hero" class="wordmark">Stefan Rautner</a>
+  <a href="#hero" class="wordmark">stefan_rautner</a>
 
   <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -37,14 +40,18 @@
     </nav>
 
     <div class="header-controls">
-      <!-- Theme toggle -->
       <button class="icon-btn" id="themeToggle" aria-label="Toggle light/dark mode">
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
       </button>
-
-      <!-- Language toggle (direct swap, no dropdown) -->
-      <button class="lang-btn" id="langToggle" aria-label="Switch language">EN</button>
+      <button class="lang-btn" id="langToggle" aria-label="Switch language">DE</button>
     </div>
   </div>
 </header>
@@ -52,13 +59,14 @@
 <!-- ─── HERO ──────────────────────────────────────────────────────────── -->
 <section id="hero" class="hero">
   <div class="hero-inner">
-    <p class="hero-eyebrow mono">// hello world</p>
-    <h1 class="hero-title" data-key="hero_title"></h1>
+    <p class="hero-eyebrow mono"></p>
+    <h1 class="hero-title"></h1>
     <p class="hero-quote mono" data-key="hero_text"></p>
     <div class="hero-actions">
-      <a href="#projects" class="btn" data-key="hero_btn"></a>
-      <a href="#contact" class="btn btn--ghost" data-key="hero_contact"></a>
+      <a href="#projects" class="btn"></a>
+      <a href="#contact"  class="btn btn--ghost"></a>
     </div>
+    <div class="hero-stats" id="heroStats"></div>
   </div>
 </section>
 
@@ -67,6 +75,7 @@
   <div class="section-inner">
     <h2 class="section-title" data-key="nav_about"></h2>
     <p class="about-text" data-key="about_text"></p>
+    <div class="about-badges" id="aboutBadges"></div>
   </div>
 </section>
 
@@ -139,14 +148,20 @@
   <div class="section-inner">
     <h2 class="section-title" data-key="nav_github_stats"></h2>
     <div class="github-grid">
-      <div class="github-card">
-        <img loading="lazy" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=StefanRautner&theme=react" alt="GitHub Profile Details">
+      <div class="github-card github-card--wide reveal reveal-delay-1">
+        <img loading="lazy"
+          src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=StefanRautner&theme=react"
+          alt="GitHub Profile Details">
       </div>
-      <div class="github-card">
-        <img loading="lazy" src="https://streak-stats.demolab.com?user=StefanRautner&theme=react" alt="GitHub Streak">
+      <div class="github-card github-card--streak reveal reveal-delay-2">
+        <img loading="lazy"
+          src="https://streak-stats.demolab.com?user=StefanRautner&theme=react"
+          alt="GitHub Streak">
       </div>
-      <div class="github-card">
-        <img loading="lazy" src="https://github-readme-stats.vercel.app/api/top-langs/?username=StefanRautner&layout=compact&theme=react" alt="Top Languages">
+      <div class="github-card reveal reveal-delay-3">
+        <img loading="lazy"
+          src="https://github-readme-stats.vercel.app/api/top-langs/?username=StefanRautner&layout=compact&theme=react"
+          alt="Top Languages">
       </div>
     </div>
   </div>
@@ -158,8 +173,8 @@
     <h2 class="section-title" data-key="contact_title"></h2>
     <p data-key="contact_text"></p>
     <div class="contact-links">
-      <a id="emailBtn" class="btn" href="mailto:stefan@stefanrautner.at" data-key="contact_btn"></a>
-      <a id="githubBtn" class="btn btn--ghost" href="https://github.com/StefanRautner" target="_blank" rel="noopener">GitHub ↗</a>
+      <a id="emailBtn" class="btn" href="mailto:stefan@stefanrautner.at"></a>
+      <a id="githubBtn" class="btn btn--ghost" href="https://github.com/StefanRautner" target="_blank" rel="noopener"></a>
     </div>
   </div>
 </section>
