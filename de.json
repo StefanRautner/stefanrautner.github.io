@@ -52,6 +52,11 @@
       "text": "EDV-Umbau im KDO-Fahrzeug bestehend aus Laptop, Bildschirm, Antennen und WLAN/SIM-Router zur mobilen Einsatzunterstützung und Kommunikation."
     },
     {
+      "title": "NeuroHive",
+      "tag": "Python · Docker · Multi-Agenten · KI",
+      "text": "Lokales Multi-Agenten-System mit automatisiertem Workflow: Ein KI-Planer bricht Ziele in Aufgaben auf, die von spezialisierten Agenten (Entwickler, Tester, Cybersecurity und Doku-Autoren) eigenständig umgesetzt werden."
+    },
+    {
       "title": "SparkNet",
       "tag": "IoT · KI · Smart Home",
       "text": "Plattformübergreifendes Smart-Home-System mit Automatisierung, Sicherheit, KI-Unterstützung, Sprachsteuerung und Bilderkennung."

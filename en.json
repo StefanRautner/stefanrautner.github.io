@@ -52,6 +52,11 @@
       "text": "EDV retrofit of a KDO command vehicle including laptop, external display, antennas, and a WiFi/SIM router for mobile command support and field communication."
     },
     {
+      "title": "NeuroHive",
+      "tag": "Python · Docker · Multi-Agent · AI",
+      "text": "Local multi-agent system with an automated workflow: An AI planner breaks goals into tasks executed autonomously by specialized agents (creators, testers, cybersec, and doc writers)."
+    },
+    {
       "title": "SparkNet",
       "tag": "IoT · AI · Smart Home",
       "text": "Cross-platform smart home system integrating automation, security, AI assistance, and remote device management with voice control and image recognition."
