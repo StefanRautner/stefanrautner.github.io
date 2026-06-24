@@ -47,6 +47,16 @@
       "link": "https://github.com/fitforfire/loeschwasserfoerderung.at"
     },
     {
+      "title": "NetworkAudit",
+      "tag": "Python · FastAPI · Cybersecurity · Network",
+      "text": "Automated network auditing and security assessment platform featuring an asychronous discovery engine, live topology mapping, and encrypted reporting."
+    },
+    {
+      "title": "Hardware Policy Gateway (HPG)",
+      "tag": "Python · Docker · Hardware Security · Embedded",
+      "text": "A minimal, default-deny hardware security gateway for Raspberry Pi running DietPi, enforcing interface isolation, forensic YARA scanning, and strict access controls."
+    },
+    {
       "title": "KDO Vehicle Retrofit",
       "tag": "Mobile · Infrastructure · Fire Service",
       "text": "EDV retrofit of a KDO command vehicle including laptop, external display, antennas, and a WiFi/SIM router for mobile command support and field communication."
