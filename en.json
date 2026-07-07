@@ -17,7 +17,8 @@
   "hero_text": "\"Debugging is like being the detective in a crime movie where you are also the murderer.\" — Filipe Fortes",
   "hero_btn": "View Projects →",
   "hero_contact": "Get in touch",
-  "about_text": "I'm Stefan Rautner, 19 years old, and I develop smart home systems & automations that are reliable, secure, and practical for everyday life.",
+  "birth_date": "2006-07-06",
+  "about_text": "I'm Stefan Rautner, {age} years old, and I develop smart home systems & automations that are reliable, secure, and practical for everyday life.",
   "about_badges": [
     { "icon": "🔥", "label": "Active Member, Volunteer Fire Department" },
     { "icon": "🖥️", "label": "IT & EDV Support for Fire Service" },

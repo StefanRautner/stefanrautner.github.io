@@ -454,6 +454,21 @@ function renderBadges(badges) {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
+   AGE CALCULATOR HELPER
+   ═══════════════════════════════════════════════════════════════════════════ */
+function calculateAge(birthDateStr) {
+  if (!birthDateStr) return '';
+  const birthDate = new Date(birthDateStr);
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const m = today.getMonth() - birthDate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+  return age;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
    APPLY LANGUAGE  — fetches JSON, populates every element
    ═══════════════════════════════════════════════════════════════════════════ */
 async function applyLang(l) {
@@ -471,7 +486,17 @@ async function applyLang(l) {
   // ── Static text nodes (data-key elements) ───────────────────────────────
   document.querySelectorAll('[data-key]').forEach(el => {
     const key = el.dataset.key;
-    if (typeof d[key] === 'string') el.textContent = d[key];
+    if (typeof d[key] === 'string') {
+      let textValue = d[key];
+      
+      // Dynamically calculate and inject age if it's the about_text
+      if (key === 'about_text' && d.birth_date) {
+        const currentAge = calculateAge(d.birth_date);
+        textValue = textValue.replace('{age}', currentAge);
+      }
+      
+      el.textContent = textValue;
+    }
   });
 
   // ── Hero title: typewriter ───────────────────────────────────────────────
