@@ -167,11 +167,11 @@
     { "title": "Englisch",  "text": "Fließend" }
   ],
   "programming": [
-    { "title": "C",           "text": "Fortgeschritten" },
-    { "title": "C#",          "text": "Fortgeschritten" },
-    { "title": "C++",         "text": "Fortgeschritten" },
+    { "title": "C",           "text": "Mittelstufe" },
+    { "title": "C#",          "text": "Mittelstufe" },
+    { "title": "C++",         "text": "Mittelstufe" },
     { "title": "Java",        "text": "Fortgeschritten" },
-    { "title": "Dart",        "text": "Fortgeschritten" },
+    { "title": "Dart",        "text": "Mittelstufe" },
     { "title": "Python",      "text": "Fortgeschritten" },
     { "title": "MicroPython", "text": "Fortgeschritten" },
     { "title": "Bash",        "text": "Fortgeschritten" },
@@ -183,7 +183,7 @@
   "databases": [
     { "title": "MySQL",      "text": "Fortgeschritten" },
     { "title": "SQLite",     "text": "Fortgeschritten" },
-    { "title": "MongoDB",    "text": "Fortgeschritten" },
+    { "title": "MongoDB",    "text": "Mittelstufe" },
     { "title": "PostgreSQL", "text": "Mittelstufe" },
     { "title": "MariaDB",    "text": "Mittelstufe" }
   ],

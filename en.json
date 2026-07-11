@@ -167,11 +167,11 @@
     { "title": "English", "text": "Fluent" }
   ],
   "programming": [
-    { "title": "C",           "text": "Advanced" },
-    { "title": "C#",          "text": "Advanced" },
-    { "title": "C++",         "text": "Advanced" },
+    { "title": "C",           "text": "Intermediate" },
+    { "title": "C#",          "text": "Intermediate" },
+    { "title": "C++",         "text": "Intermediate" },
     { "title": "Java",        "text": "Advanced" },
-    { "title": "Dart",        "text": "Advanced" },
+    { "title": "Dart",        "text": "Intermediate" },
     { "title": "Python",      "text": "Advanced" },
     { "title": "MicroPython", "text": "Advanced" },
     { "title": "Bash",        "text": "Advanced" },
@@ -183,7 +183,7 @@
   "databases": [
     { "title": "MySQL",      "text": "Advanced" },
     { "title": "SQLite",     "text": "Advanced" },
-    { "title": "MongoDB",    "text": "Advanced" },
+    { "title": "MongoDB",    "text": "Intermediate" },
     { "title": "PostgreSQL", "text": "Intermediate" },
     { "title": "MariaDB",    "text": "Intermediate" }
   ],
