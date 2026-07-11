@@ -68,6 +68,11 @@
       "text": "Lokales Multi-Agenten-System mit automatisiertem Workflow: Ein KI-Planer bricht Ziele in Aufgaben auf, die von spezialisierten Agenten (Entwickler, Tester, Cybersecurity und Doku-Autoren) eigenständig umgesetzt werden."
     },
     {
+      "title": "CheckHub",
+      "tag": "Python · FastAPI · Verwaltung",
+      "text": "Plattform zur Geräteprüfung und Dokumentation für die örtliche freiwillige Feuerwehr mit digitalen Checklisten, Wartungsaufzeichnungen und Protokollverwaltung."
+    },
+    {
       "title": "SparkNet",
       "tag": "IoT · KI · Smart Home",
       "text": "Plattformübergreifendes Smart-Home-System mit Automatisierung, Sicherheit, KI-Unterstützung, Sprachsteuerung und Bilderkennung."

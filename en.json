@@ -68,6 +68,11 @@
       "text": "Local multi-agent system with an automated workflow: An AI planner breaks goals into tasks executed autonomously by specialized agents (creators, testers, cybersec, and doc writers)."
     },
     {
+      "title": "CheckHub",
+      "tag": "Python · FastAPI · Administration",
+      "text": "Equipment inspection and documentation platform for the local volunteer fire department featuring digital checklists, maintenance records and protocol management."
+    },
+    {
       "title": "SparkNet",
       "tag": "IoT · AI · Smart Home",
       "text": "Cross-platform smart home system integrating automation, security, AI assistance, and remote device management with voice control and image recognition."
