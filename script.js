@@ -518,6 +518,10 @@ async function applyLang(l) {
   if (emailBtn && d.contact_btn) emailBtn.textContent = d.contact_btn;
   const githubBtn = $('githubBtn');
   if (githubBtn && d.github_btn) githubBtn.textContent = d.github_btn;
+  const linkedinBtn = $('linkedinBtn');
+  if (linkedinBtn && d.linkedin_btn) linkedinBtn.textContent = d.linkedin_btn;
+  const credlyBtn = $('credlyBtn');
+  if (credlyBtn && d.credly_btn) credlyBtn.textContent = d.credly_btn;
 
   // ── Dynamic sections ─────────────────────────────────────────────────────
   renderStats(d);
