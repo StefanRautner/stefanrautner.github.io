@@ -1,0 +1,39 @@
+name: Refresh GitHub stat cards
+
+# Rebuilds stats/*.svg so the cards stay current without the visitor's browser
+# ever contacting a third-party service. Commits only when something changed.
+
+on:
+  schedule:
+    - cron: '17 3 * * *'   # nightly, 03:17 UTC
+  workflow_dispatch:        # and on demand from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Rebuild stat cards
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python tools/generate-stats.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- stats/; then
+            echo "No change to stat cards."
+            exit 0
+          fi
+          git add stats/
+          git commit -m "Refresh GitHub stat cards"
+          git push

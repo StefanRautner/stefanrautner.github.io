@@ -1,2 +1,9 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Binary assets — never apply text/EOL normalization (it corrupts font files)
+*.woff2 binary
+*.woff  binary
+*.ttf   binary
+*.ico   binary
+*.png   binary

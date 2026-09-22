@@ -23,6 +23,7 @@ const CHIP_COLORS = {
    ═══════════════════════════════════════════════════════════════════════════ */
 const $ = id => document.getElementById(id);
 let lang  = localStorage.getItem('lang')  || 'en';
+let i18n  = {};   // current language dictionary, set by applyLang()
 let theme = localStorage.getItem('theme') || 'dark';
 
 // Cache loaded JSON so we don't re-fetch on language toggle
@@ -292,6 +293,20 @@ function plain(html) {
   return (html || '').replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, '').trim();
 }
 
+// Screen-reader-only "opens in a new tab" suffix for external links.
+function newTabHint() {
+  const hint = i18n.new_tab_hint || '(opens in a new tab)';
+  return `<span class="sr-only"> ${hint}</span>`;
+}
+
+// Label an external link, keeping the screen-reader "new tab" hint. Plain
+// textContent would drop it, so the hint is appended as a separate node.
+function setExternalLabel(el, text) {
+  if (!el || !text) return;
+  el.textContent = text;
+  el.insertAdjacentHTML('beforeend', newTabHint());
+}
+
 function delayClass(i) {
   return 'reveal-delay-' + Math.min((i % 4) + 1, 5);
 }
@@ -304,9 +319,9 @@ function renderProjects(list) {
     if (p.link) { el.href = p.link; el.target = '_blank'; el.rel = 'noopener'; }
     el.innerHTML = `
       ${p.tag ? `<div class="project-card__tag">${p.tag}</div>` : ''}
-      <div class="project-card__title">${p.title}</div>
+      <h3 class="project-card__title">${p.title}${p.link ? newTabHint() : ''}</h3>
       <div class="project-card__text">${plain(p.text)}</div>
-      ${p.link ? '<div class="project-card__cta">View on GitHub →</div>' : ''}`;
+      ${p.link ? `<div class="project-card__cta">${i18n.project_cta || 'View on GitHub →'}</div>` : ''}`;
     g.appendChild(el);
   });
 }
@@ -317,7 +332,7 @@ function renderCertificates(list) {
     const el = document.createElement(c.link ? 'a' : 'div');
     el.className = `card${c.link ? ' card--link' : ''} reveal ${delayClass(i)}`;
     if (c.link) { el.href = c.link; el.target = '_blank'; el.rel = 'noopener'; }
-    el.innerHTML = `<div class="card__title">${c.title}</div><div class="card__sub">${c.text}</div>`;
+    el.innerHTML = `<h3 class="card__title">${c.title}${c.link ? newTabHint() : ''}</h3><div class="card__sub">${c.text}</div>`;
     g.appendChild(el);
   });
 }
@@ -351,7 +366,7 @@ function renderTimeline(list) {
     el.innerHTML = `
       <div class="timeline-item__card">
         <div class="timeline-item__body">
-          <div class="timeline-item__title">${item.title}</div>
+          <h3 class="timeline-item__title">${item.title}${item.link ? newTabHint() : ''}</h3>
         </div>
         <div class="timeline-item__badge">${badge}</div>
       </div>`;
@@ -366,7 +381,7 @@ function renderVoluntary(list) {
     el.className = `card${item.link ? ' card--link' : ''} reveal reveal-delay-${Math.min(i + 1, 5)}`;
     if (item.link) { el.href = item.link; el.target = '_blank'; el.rel = 'noopener'; }
     el.innerHTML = `
-      <div class="card__title">${item.title}</div>
+      <h3 class="card__title">${item.title}${item.link ? newTabHint() : ''}</h3>
       <div class="card__sub" style="margin-top:.3rem;line-height:1.65">${plain(item.text)}</div>`;
     g.appendChild(el);
   });
@@ -483,6 +498,8 @@ async function applyLang(l) {
     return;
   }
 
+  i18n = d;
+
   // ── Static text nodes (data-key elements) ───────────────────────────────
   document.querySelectorAll('[data-key]').forEach(el => {
     const key = el.dataset.key;
@@ -516,12 +533,9 @@ async function applyLang(l) {
   // ── Contact buttons ──────────────────────────────────────────────────────
   const emailBtn = $('emailBtn');
   if (emailBtn && d.contact_btn) emailBtn.textContent = d.contact_btn;
-  const githubBtn = $('githubBtn');
-  if (githubBtn && d.github_btn) githubBtn.textContent = d.github_btn;
-  const linkedinBtn = $('linkedinBtn');
-  if (linkedinBtn && d.linkedin_btn) linkedinBtn.textContent = d.linkedin_btn;
-  const credlyBtn = $('credlyBtn');
-  if (credlyBtn && d.credly_btn) credlyBtn.textContent = d.credly_btn;
+  setExternalLabel($('githubBtn'),   d.github_btn);
+  setExternalLabel($('linkedinBtn'), d.linkedin_btn);
+  setExternalLabel($('credlyBtn'),   d.credly_btn);
 
   // ── Dynamic sections ─────────────────────────────────────────────────────
   renderStats(d);

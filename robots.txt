@@ -1,0 +1,8 @@
+# https://stefanrautner.github.io/
+User-agent: *
+Allow: /
+
+# Build-time tooling only — nothing user-facing lives here.
+Disallow: /tools/
+
+Sitemap: https://stefanrautner.github.io/sitemap.xml

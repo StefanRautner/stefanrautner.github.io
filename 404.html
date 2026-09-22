@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 – Page not found · Stefan Rautner</title>
+  <meta name="description" content="This page does not exist.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#080810" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f0f4f8" media="(prefers-color-scheme: light)">
+  <link rel="preload" href="/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    // Match the theme the visitor chose on the main page, before first paint.
+    try {
+      var t = localStorage.getItem('theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) { /* storage blocked — keep the dark default */ }
+  </script>
+  <style>
+    /* Self-contained: script.js populates the main page's containers, which do
+       not exist here, so this page carries its own small layout. */
+    .nf {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.1rem;
+      text-align: center;
+      padding: 2rem 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    .nf__code {
+      font-family: var(--font-mono);
+      font-size: clamp(3.5rem, 14vw, 7rem);
+      font-weight: 500;
+      line-height: 1;
+      color: var(--cyan-text);
+    }
+    .nf__title {
+      font-size: clamp(1.25rem, 4vw, 1.75rem);
+      color: var(--text-strong);
+    }
+    .nf__text { color: var(--text-muted); max-width: 32rem; }
+    .nf__text + .nf__text { margin-top: -0.4rem; }
+    .nf__actions { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; margin-top: 0.6rem; }
+  </style>
+</head>
+<body>
+
+<main class="nf">
+  <p class="nf__code">404</p>
+  <h1 class="nf__title" lang="en">This page doesn&rsquo;t exist.</h1>
+  <p class="nf__text" lang="en">The link may be outdated, or the address mistyped.</p>
+  <p class="nf__text" lang="de">Diese Seite existiert nicht. Der Link ist m&ouml;glicherweise veraltet oder die Adresse falsch geschrieben.</p>
+  <div class="nf__actions">
+    <a class="btn" href="/">Back to the portfolio</a>
+    <a class="btn btn--ghost" href="mailto:stefan.rautner06@gmail.com">Email me</a>
+  </div>
+</main>
+
+</body>
+</html>
