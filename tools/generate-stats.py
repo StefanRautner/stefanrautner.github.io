@@ -37,7 +37,10 @@ UA = "portfolio-stats-builder"
 
 # Repos to leave out of the language tally — vendored or generated code skews
 # the byte counts badly. Add names here as needed.
-EXCLUDE_REPOS: set[str] = set()
+# MBotController holds ~2.0 MB of vendored JavaScript, which alone produced
+# 74% "JavaScript" on the card and drowned out everything actually written
+# by hand. Remove the entry to count it again.
+EXCLUDE_REPOS: set[str] = {"MBotController"}
 
 # github/linguist colours for the languages that actually show up.
 LANG_COLORS = {

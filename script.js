@@ -3,13 +3,19 @@
 /* ═══════════════════════════════════════════════════════════════════════════
    SKILL LEVEL MAP  (text value in JSON → percentage)
    ═══════════════════════════════════════════════════════════════════════════ */
+// Proficiency on a 0-5 dot scale. The value IS the number of dots — it is not
+// a percentage and is not measured against anything. Deliberately reserved:
+// 5 would mean a native language, so no programming language reaches it.
+// Only 'Advanced' and 'Intermediate' actually reach the bars; the language
+// levels are listed for completeness and are rendered as chips.
 const SKILL_LEVELS = {
-  Advanced: 88, Fortgeschritten: 88,
-  Intermediate: 60, Mittelstufe: 60,
-  Native: 100, Muttersprache: 100,
-  Fluent: 85, 'Fließend': 85,
-  'Cross-platform': 82
+  Native: 5,   Muttersprache: 5,
+  Fluent: 4,   'Fließend': 4,
+  Advanced: 3.5, Fortgeschritten: 3.5,
+  Intermediate: 2, Mittelstufe: 2
 };
+const SKILL_FALLBACK = 2;
+const SKILL_MAX = 5;
 
 const CHIP_COLORS = {
   Backend: '#4dd0e1', Frontend: '#a78bfa',
@@ -387,16 +393,34 @@ function renderVoluntary(list) {
   });
 }
 
+// Five-dot proficiency scale, partial dots included. The level in the JSON is
+// a word ("Advanced"); the percentage was only ever derived from it, so dots
+// show the same relative standing without claiming a measured value. The level
+// word is exposed to screen readers, which the bare number never was.
+function skillDots(pct, label) {
+  const TOTAL = 5;
+  const filled = (Math.max(0, Math.min(100, pct)) / 100) * TOTAL;
+  let dots = '';
+  for (let i = 0; i < TOTAL; i++) {
+    const part = Math.max(0, Math.min(1, filled - i));   // 0 = empty, 1 = full
+    if (part >= 0.995)     dots += '<span class="skill-bar__dot skill-bar__dot--on"></span>';
+    else if (part <= 0.005) dots += '<span class="skill-bar__dot"></span>';
+    else dots += `<span class="skill-bar__dot skill-bar__dot--part" style="--fill:${(part * 100).toFixed(0)}%"></span>`;
+  }
+  return `<span class="skill-bar__dots" role="img" aria-label="${label}">${dots}</span>`;
+}
+
 function renderSkillBars(containerId, list) {
   const c = $(containerId); c.innerHTML = '';
   list.forEach(item => {
-    const pct = SKILL_LEVELS[item.text] || 60;
+    const dots = SKILL_LEVELS[item.text] ?? SKILL_FALLBACK;
+    const pct = (dots / SKILL_MAX) * 100;
     const wrap = document.createElement('div');
     wrap.className = 'skill-bar';
     wrap.innerHTML = `
       <span class="skill-bar__name">${item.title}</span>
       <div class="skill-bar__track"><div class="skill-bar__fill" data-pct="${pct}"></div></div>
-      <span class="skill-bar__pct">${pct}%</span>`;
+      ${skillDots(pct, item.text)}`;
     c.appendChild(wrap);
   });
   animateBarsIn(c);

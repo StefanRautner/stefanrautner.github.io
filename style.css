@@ -1001,7 +1001,7 @@ section {
 
 .skill-bar {
   display: grid;
-  grid-template-columns: 115px 1fr 38px;
+  grid-template-columns: 115px 1fr 55px;
   align-items: center;
   gap: 0.75rem;
 }
@@ -1043,11 +1043,36 @@ section {
   0%   { left: -60%; }
   100% { left: 120%; }
 }
-.skill-bar__pct {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  text-align: right;
+/* Five-dot proficiency scale. Replaces the old percentage label: the level
+   in the JSON is a word, the number was derived from it, so a precise "88%"
+   claimed an accuracy that never existed. Dots carry the same relative
+   information without asserting a measurement. Partial dots are filled with a
+   hard-stop gradient. */
+.skill-bar__dots {
+  display: flex;
+  gap: 3px;
+  justify-content: flex-end;
+  align-items: center;
+}
+.skill-bar__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  /* Empty dots are rings, not a paler fill. Distinguishing them by shape as
+     well as colour keeps them apart at any contrast, and satisfies the 3:1
+     non-text requirement (WCAG 1.4.11) that a fill-only version missed in
+     the light theme. */
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--text-muted);
+}
+.skill-bar__dot--on {
+  background: var(--cyan);
+  box-shadow: none;
+}
+.skill-bar__dot--part {
+  background: linear-gradient(90deg,
+    var(--cyan) var(--fill, 50%), transparent var(--fill, 50%));
 }
 
 /* ─── Skill chips ─── */
@@ -1286,7 +1311,7 @@ footer {
   .github-grid { grid-template-columns: 1fr; }
   .github-card--wide { grid-column: 1; }
 
-  .skill-bar { grid-template-columns: 90px 1fr 32px; }
+  .skill-bar { grid-template-columns: 90px 1fr 55px; }
 }
 
 /* ── Small mobile: 540px ── */
@@ -1299,7 +1324,7 @@ footer {
 
   .cards-grid { grid-template-columns: 1fr; }
 
-  .skill-bar { grid-template-columns: 80px 1fr 30px; gap: 0.5rem; }
+  .skill-bar { grid-template-columns: 80px 1fr 55px; gap: 0.5rem; }
   .skill-bar__name { font-size: 0.72rem; }
 }
 
