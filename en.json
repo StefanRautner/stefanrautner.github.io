@@ -45,7 +45,7 @@
   "projects": [
     {
       "title": "Löschwasserförderung",
-      "tag": "Flutter · Dart · Open Source · Fire Service",
+      "tag": "Flutter · Dart · Open Source · Fire Department",
       "text": "Multi-platform app for calculating relay lines for Austrian Fire Brigades. Used operationally in the field.",
       "link": "https://github.com/fitforfire/loeschwasserfoerderung.at"
     },
@@ -61,8 +61,14 @@
     },
     {
       "title": "KDO Vehicle Retrofit",
-      "tag": "Mobile · Infrastructure · Fire Service",
+      "tag": "Mobile · Infrastructure · Fire Department",
       "text": "EDV retrofit of a KDO command vehicle including laptop, external display, antennas, and a WiFi/SIM router for mobile command support and field communication."
+    },
+    {
+      "title": "Fire Department Kuchl Website",
+      "tag": "Typo3 · Website ·Fire Department",
+      "text": "Design and ongoing maintenance of the Kuchl volunteer fire brigade's website, built on TYPO3.",
+      "link": "https://www.ff-kuchl.at"
     },
     {
       "title": "NeuroHive",
