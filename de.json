@@ -65,6 +65,12 @@
       "text": "EDV-Umbau im KDO-Fahrzeug bestehend aus Laptop, Bildschirm, Antennen und WLAN/SIM-Router zur mobilen Einsatzunterstützung und Kommunikation."
     },
     {
+      "title": "Feuerwehr Kuchl Website",
+      "tag": "Typo3 · Website · Feuerwehr",
+      "text": "Gestaltung und laufende Betreuung des Webauftritts der Freiwilligen Feuerwehr Kuchl auf Basis von TYPO3.",
+      "link": "https://www.ff-kuchl.at"
+    },
+    {
       "title": "NeuroHive",
       "tag": "Python · Docker · Multi-Agenten · KI",
       "text": "Lokales Multi-Agenten-System mit automatisiertem Workflow: Ein KI-Planer bricht Ziele in Aufgaben auf, die von spezialisierten Agenten (Entwickler, Tester, Cybersecurity und Doku-Autoren) eigenständig umgesetzt werden."
