@@ -70,8 +70,8 @@ def main() -> None:
     d.rectangle([80, 150, 86, 292], fill=CYAN)
 
     f_eyebrow = load("jetbrains-mono-latin.woff2", 26, 400)
-    f_name = load("space-grotesk-latin.woff2", 40, 500)
-    f_title = load("space-grotesk-latin.woff2", 64, 700)
+    f_name = load("schibsted-grotesk-latin.woff2", 40, 500)
+    f_title = load("schibsted-grotesk-latin.woff2", 64, 700)
     f_chip = load("jetbrains-mono-latin.woff2", 22, 400)
     f_foot = load("jetbrains-mono-latin.woff2", 24, 400)
 

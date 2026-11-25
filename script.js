@@ -28,7 +28,8 @@ const CHIP_COLORS = {
    STATE
    ═══════════════════════════════════════════════════════════════════════════ */
 const $ = id => document.getElementById(id);
-let lang  = localStorage.getItem('lang')  || 'en';
+// Only the two shipped dictionaries: the stored value goes into fetch().
+let lang  = ['en', 'de'].includes(localStorage.getItem('lang')) ? localStorage.getItem('lang') : 'en';
 let i18n  = {};   // current language dictionary, set by applyLang()
 let theme = localStorage.getItem('theme') || 'dark';
 

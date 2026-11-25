@@ -79,6 +79,28 @@ def esc(s: str) -> str:
              .replace(">", "&gt;").replace('"', "&quot;"))
 
 
+# Anything that can run script or pull in outside content. The cards are
+# published on the site's own origin, so a third-party body carrying any of
+# these is refused and the last good file is kept.
+# shortcut: a deny-list, not a parser; switch to an XML allow-list rebuild if
+# the upstream cards ever start using links or embedded markup legitimately.
+ACTIVE_SVG = re.compile(
+    r"<\s*(script|foreignObject|iframe|object|embed|use|a|image|animate|set)\b"
+    r"|\son[a-z]+\s*="
+    r"|(?:xlink:)?href\s*="
+    r"|javascript:|@import|url\(\s*['\"]?(?!#)",
+    re.IGNORECASE,
+)
+
+
+def check_inert(svg: bytes) -> bytes:
+    """Return the SVG unchanged, or raise if it holds active content."""
+    m = ACTIVE_SVG.search(svg.decode("utf-8", "replace"))
+    if m:
+        raise ValueError(f"refusing SVG with active content: {m.group(0)!r}")
+    return svg
+
+
 def flatten_animations(svg: bytes) -> bytes:
     """Bake CSS entrance animations into their finished state.
 
@@ -167,7 +189,7 @@ def main() -> int:
             body = fetch(url)
             if not body.lstrip().startswith(b"<svg"):
                 raise ValueError(f"not an SVG: {body[:60]!r}")
-            write(name, flatten_animations(body))
+            write(name, flatten_animations(check_inert(body)))
         except (urllib.error.URLError, ValueError, OSError) as e:
             failures += 1
             kept = "kept existing file" if (OUT / name).exists() else "NO FILE"

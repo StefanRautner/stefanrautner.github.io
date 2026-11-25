@@ -27,7 +27,7 @@ A modern, highly performant, and responsive personal portfolio website showcasin
 
 * **HTML5** & **CSS3** (Custom Properties, Grid & Flexbox)
 * **Vanilla JavaScript** (ES6+, Intersection Observer API, HTML5 Canvas)
-* **Self-hosted assets:** No third-party requests at runtime. Fonts (*Space Grotesk*, *JetBrains Mono*, both OFL-1.1) are served from `fonts/`, and the GitHub stat cards are pre-built SVGs in `stats/`.
+* **Self-hosted assets:** No third-party requests at runtime. Fonts (*Schibsted Grotesk*, *JetBrains Mono*, both OFL-1.1) are served from `fonts/`, and the GitHub stat cards are pre-built SVGs in `stats/`.
 
 ## 💻 Getting Started
 
@@ -49,6 +49,6 @@ A modern, highly performant, and responsive personal portfolio website showcasin
 © 2026 Stefan Rautner. All rights reserved.
 
 The source code, design, text and images of this portfolio are not licensed for
-reuse. The bundled webfonts are the exception: *Space Grotesk* and *JetBrains
+reuse. The bundled webfonts are the exception: *Schibsted Grotesk* and *JetBrains
 Mono* are licensed under the SIL Open Font License 1.1, and their licence texts
 ship alongside them in `fonts/`.
